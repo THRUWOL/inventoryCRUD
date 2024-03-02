@@ -1,5 +1,8 @@
 package ru.yarosh.warehouse.controller;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,35 +16,41 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/products")
+@OpenAPIDefinition(info = @Info(title = "Управление товаром"))
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
     @PostMapping
+    @Tag(name = "Добавить товар")
     public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         Product createdProduct = productService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
 
     @GetMapping
+    @Tag(name = "Получить товары")
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
+    @Tag(name = "Получить товар")
     public ResponseEntity<Product> getProductById(@PathVariable UUID id) {
         Product product = productService.getProductById(id);
         return product != null ? ResponseEntity.ok(product) : ResponseEntity.notFound().build();
     }
 
     @PutMapping("/{id}")
+    @Tag(name = "Обновить информацию о товаре")
     public ResponseEntity<Product> updateProduct(@PathVariable UUID id, @Valid @RequestBody Product updatedProduct) {
         Product product = productService.updateProduct(id, updatedProduct);
         return product != null ? ResponseEntity.ok(product) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
+    @Tag(name = "Удалить товар")
     public ResponseEntity<Void> deleteProduct(@PathVariable UUID id) {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
