@@ -12,7 +12,6 @@ import java.util.UUID;
 
 @Entity
 @Data
-
 public class Product {
 
     @Id
