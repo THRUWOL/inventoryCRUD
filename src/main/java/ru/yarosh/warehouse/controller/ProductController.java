@@ -14,6 +14,9 @@ import ru.yarosh.warehouse.service.ProductService;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Контроллер для управления товарами.
+ */
 @RestController
 @RequestMapping("/api/products")
 @OpenAPIDefinition(info = @Info(title = "Управление товаром"))
@@ -22,6 +25,12 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    /**
+     * Создает новый товар.
+     *
+     * @param product информация о товаре, которую необходимо создать
+     * @return созданный товар
+     */
     @PostMapping
     @Tag(name = "Добавить товар")
     public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
@@ -29,12 +38,23 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
 
+    /**
+     * Получает список всех товаров.
+     *
+     * @return список всех товаров
+     */
     @GetMapping
     @Tag(name = "Получить товары")
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
 
+    /**
+     * Получает товар по его идентификатору.
+     *
+     * @param id идентификатор товара
+     * @return товар с указанным идентификатором, если он существует, иначе возвращает статус 404 Not Found
+     */
     @GetMapping("/{id}")
     @Tag(name = "Получить товар")
     public ResponseEntity<Product> getProductById(@PathVariable UUID id) {
@@ -42,6 +62,13 @@ public class ProductController {
         return product != null ? ResponseEntity.ok(product) : ResponseEntity.notFound().build();
     }
 
+    /**
+     * Обновляет информацию о товаре.
+     *
+     * @param id             идентификатор товара, информацию о котором необходимо обновить
+     * @param updatedProduct обновленная информация о товаре
+     * @return обновленный товар, если товар существует, иначе возвращает статус 404 Not Found
+     */
     @PutMapping("/{id}")
     @Tag(name = "Обновить информацию о товаре")
     public ResponseEntity<Product> updateProduct(@PathVariable UUID id, @Valid @RequestBody Product updatedProduct) {
@@ -49,6 +76,12 @@ public class ProductController {
         return product != null ? ResponseEntity.ok(product) : ResponseEntity.notFound().build();
     }
 
+    /**
+     * Удаляет товар по его идентификатору.
+     *
+     * @param id идентификатор товара, который необходимо удалить
+     * @return статус 204 No Content
+     */
     @DeleteMapping("/{id}")
     @Tag(name = "Удалить товар")
     public ResponseEntity<Void> deleteProduct(@PathVariable UUID id) {

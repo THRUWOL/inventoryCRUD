@@ -6,6 +6,9 @@ import ru.yarosh.warehouse.model.Product;
 
 import java.util.UUID;
 
+/**
+ * Репозиторий для работы с товарами.
+ */
 @Repository
 public interface ProductRepository extends JpaRepository<Product, UUID> {
 
