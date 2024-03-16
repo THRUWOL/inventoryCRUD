@@ -1,0 +1,7 @@
+ru.yarosh.warehouse
+ru.yarosh.warehouse.controller
+ru.yarosh.warehouse.handler
+ru.yarosh.warehouse.handler.exception
+ru.yarosh.warehouse.model
+ru.yarosh.warehouse.repository
+ru.yarosh.warehouse.service

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.yarosh.warehouse"},{"l":"ru.yarosh.warehouse.controller"},{"l":"ru.yarosh.warehouse.handler"},{"l":"ru.yarosh.warehouse.handler.exception"},{"l":"ru.yarosh.warehouse.model"},{"l":"ru.yarosh.warehouse.repository"},{"l":"ru.yarosh.warehouse.service"}];updateSearchResults();
