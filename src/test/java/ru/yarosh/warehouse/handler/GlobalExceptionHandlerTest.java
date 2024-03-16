@@ -32,14 +32,11 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
-    public void testHandleOtherExceptions() {
-        // Подготовка
+    void testHandleOtherExceptions() {
         Exception exception = new Exception("Internal Server Error");
 
-        // Действие
         ResponseEntity<Object> responseEntity = globalExceptionHandler.handleOtherExceptions(exception, webRequest);
 
-        // Проверка
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.getStatusCode());
         assertEquals("Error happened: Internal Server Error", responseEntity.getBody());
     }
