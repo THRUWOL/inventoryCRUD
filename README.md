@@ -9,12 +9,12 @@ spring.datasource.username=
 spring.datasource.password=
 ```
 ### Запуск приложения через терминал/консоль:
-   1. Для начала необходимо выполнить команду `mvn compile`
-   2. Затем выполнить `mvn package`.
-   3. Сформируется папка `target` в папке с проектом и необходимо будет выполнить команду: `java -jar target/warehouse-0.0.1-SNAPSHOT.jar`.
+   1. Для начала необходимо выполнить команду ```mvn compile```
+   2. Затем выполнить ```mvn package```.
+   3. Сформируется папка `target` в папке с проектом и необходимо будет выполнить команду: ```java -jar target/warehouse-0.0.1-SNAPSHOT.jar```.
    4. После чего можно выполнить команду:
-        * для локального запуска: `mvn spring-boot:run -Plocal`
-        * для запуска приложения в Docker: `mvn spring-boot:run -Pdocker`
+        * для локального запуска: ```mvn spring-boot:run -Plocal```
+        * для запуска приложения в Docker: ```mvn spring-boot:run -Pdocker```
 ### Запуск приложения через IntelliJ IDEA:
    1. Во вкладе maven выполнить следующие операции:
         * Reload All Maven Project 
